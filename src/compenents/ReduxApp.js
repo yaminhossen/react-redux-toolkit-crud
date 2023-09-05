@@ -33,13 +33,13 @@ function ReduxApp() {
                 </button>
             </div> */}
             {
-                contacts.map((contact) => {
-                    return <div style={{ "margin": "20px", }} key={contact.id}>{contact.name} 
+                contacts.map((contact, index) => {
+                    return <div style={{ "margin": "20px", }} key={contact.id}>Id: {index+1} {contact.name} 
                     <span onClick={() => dispatch(removeData(contact.id))} style={{ "cursor": "pointer", "border": "1px solid red", "padding": "0px 4px", "margin": "10px" }}>X</span> 
 
                     <Link to={`user-details/${contact.id}`}><span  style={{ "cursor": "pointer", "border": "1px solid red", "padding": "0px 4px", "margin": "10px" }}>Details</span></Link>
 
-                    <Link to={`update-user/${contact.id}`}><span onClick={() => dispatch(updataData(contact.id))} style={{ "cursor": "pointer", "border": "1px solid red", "padding": "0px 4px", "margin": "10px" }}>update</span></Link>
+                    <Link to={`edit-user/${contact.id}`}><span  style={{ "cursor": "pointer", "border": "1px solid red", "padding": "0px 4px", "margin": "10px" }}>update</span></Link>
                     </div>
                 })
             }

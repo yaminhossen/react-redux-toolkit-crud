@@ -15,19 +15,13 @@ function AddUser() {
   console.log(contacts[3])
   // const history = useHistory();
   const dispatch = useDispatch()
-  const { name, email, phone, status } = state;
+  const { name, email, phone } = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(state)
     dispatch(addData(state))
     console.log(contacts)
-
-    //   if (!name || !email || !phone || !status) {
-    //     toast.error("Please provide value into each input field");
-    //   } else {
-
-    //   }
   };
 
   const handleInputChange = (e) => {
@@ -36,10 +30,10 @@ function AddUser() {
     setState({ ...state, [name]: value });
   };
 
-  const handleDropdownChange = (e) => {
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  };
+  // const handleDropdownChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setState({ ...state, [name]: value });
+  // };
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -70,23 +64,6 @@ function AddUser() {
           value={email || ""}
           onChange={handleInputChange}
         />
-        {/* <label htmlFor="status">Status</label>
-        <select
-          className="dropdown"
-          name="status"
-          onChange={handleDropdownChange}
-        >
-          <option>Please Select Status</option>
-          <option value="Active" selected={status === "Active" ? status : ""}>
-            Active
-          </option>
-          <option
-            value="Inactive"
-            selected={status === "Inactive" ? status : ""}
-          >
-            Inactive
-          </option>
-        </select> */}
         <label htmlFor="phone">Phone</label>
         <input
           type="text"
@@ -97,9 +74,7 @@ function AddUser() {
           onChange={handleInputChange}
         />
         <input type="submit" value="Save" />
-        <Link to="/">
-          <input type="button" value="Go Back" />
-        </Link>
+        
       </form>
     </div>
   );

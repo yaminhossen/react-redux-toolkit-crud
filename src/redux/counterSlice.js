@@ -37,9 +37,7 @@ const counterSlice = createSlice({
     decrement: (state) => {
       state.count -= 1
     },
-    getData:(state, action)=>{
-      state.contact = state.contacts.find((item) => item.id == action.payload)
-    },
+    
     updataData:(state, action)=>{
       // state.contact = state.contacts.find((item) => item.id == action.payload)
       state.contacts = state.contacts.filter((t) => t.id === action.payload.id ? action.payload : t)
@@ -50,6 +48,20 @@ const counterSlice = createSlice({
       const newData = {...action.payload, id:uuidv4()}
       state.contacts = [...state.contacts, newData]
       // console.log(newData)
+    },
+    editUser: (state, action) => {
+      const { id, name, email } = action.payload;
+      console.log(id, name, email)
+      console.log(state.contacts)
+      const existingUser = state.contacts.find(user => user.id == id);
+      const ddd = (data) => data == existingUser;
+      const indexResult = state.contacts.findIndex(ddd)
+      console.log(indexResult)
+      console.log(existingUser.name)
+      if(existingUser) {
+        existingUser.name = name;
+        existingUser.email = email;
+      }
     },
     removeData: (state, action) => { 
       // const newData = {...action.payload, id:uuidv4()}
@@ -62,5 +74,5 @@ const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment,addData, decrement,removeData,getData ,updataData } = counterSlice.actions
+export const { increment,addData, decrement,removeData ,editUser,updataData } = counterSlice.actions
 export default counterSlice.reducer

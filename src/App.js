@@ -5,6 +5,7 @@ import Home from './compenents/Home';
 import AddUser from './compenents/AddUser';
 import UpdateUser from './compenents/UpdateUser';
 import UserDetails from './compenents/UserDetails';
+import EditUser from './compenents/EditUser';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Home></Home>}></Route>
       <Route path='/adduser' element={<AddUser></AddUser>}></Route>
       <Route path='/update-user/:id' element={<UpdateUser></UpdateUser>}></Route>
+      <Route path='/edit-user/:id' element={<EditUser></EditUser>}></Route>
       <Route path='/user-details/:id' element={<UserDetails></UserDetails>}></Route>
       {/* <Route path='/'></Route> */}
      </Routes>
