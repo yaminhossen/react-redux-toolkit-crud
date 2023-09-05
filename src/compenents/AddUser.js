@@ -1,6 +1,6 @@
 import React, { useState, } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import { addData,updataData } from '../redux/counterSlice';
 
 const initialState = {
@@ -14,6 +14,7 @@ function AddUser() {
   const { count, contacts } = useSelector((state) => state.counter)
   console.log(contacts[3])
   // const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const { name, email, phone } = state;
 
@@ -22,6 +23,7 @@ function AddUser() {
     console.log(state)
     dispatch(addData(state))
     console.log(contacts)
+    navigate('/');
   };
 
   const handleInputChange = (e) => {
